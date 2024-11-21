@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
       libzip-dev \
       zip unzip \
       git && \
+      sudo apt install nodejs npm && \
       docker-php-ext-install pdo_pgsql && \
       docker-php-ext-install bcmath && \
       docker-php-ext-install gd && \
