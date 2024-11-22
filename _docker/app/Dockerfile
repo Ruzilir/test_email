@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
       libpng-dev \
       libzip-dev \
       zip unzip \
+      nodejs \
+      npm \
       git && \
       docker-php-ext-install pdo_pgsql && \
       docker-php-ext-install bcmath && \
