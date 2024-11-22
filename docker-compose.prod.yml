@@ -28,6 +28,16 @@ services:
     depends_on:
       - db
   
+  node:
+    build:
+      context: .
+      dockerfile: _docker/node/Dockerfile
+    volumes:
+      - ./:/var/www/
+    container_name: project_node
+    depends_on:
+      - app
+  
   db:
     image: postgres:16.4
     restart: always
