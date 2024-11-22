@@ -1,11 +1,16 @@
 FROM node:20
 
-WORKDIR /var/www
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    vim \
+    zip \
+    unzip \
+    curl
 
-COPY package*.json ./
+# Change current user
+USER node
 
-RUN npm install
+EXPOSE 5173
 
-COPY . .
-
-RUN npm run build
+# https://github.com/vitejs/vite/discussions/3396
+CMD ["sh", "-c", "npm install && npm run dev -- --host"]

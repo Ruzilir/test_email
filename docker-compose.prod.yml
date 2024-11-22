@@ -30,11 +30,14 @@ services:
   
   node:
     build:
-      context: .
-      dockerfile: _docker/node/Dockerfile
+        context: .
+        dockerfile: _docker/node/Dockerfile
+    tty: true
+    ports:
+        - "5173:5173"
+    working_dir: /var/www
     volumes:
-      - ./:/var/www/
-    container_name: project_node
+        - .:/var/www
 
   db:
     image: postgres:16.4
