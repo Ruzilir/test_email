@@ -29,21 +29,15 @@ services:
       - db
   
   node:
-    image: "node:20"
-    user: "node"
-    working_dir: /var/www
-    environment:
-      - NODE_ENV=production
+    build:
+      context: .
+      dockerfile: _docker/node/Dockerfile
     volumes:
-      - ./:/var/www
-    expose:
-      - "8081"
-    ports: # use if it is necessary to expose the container to the host machine
-      - "8001:8001"
-    command: "npm start"
+      - ./:/var/www/
+    container_name: project_node
+    depends_on:
+      - db
 
-  
-  
   db:
     image: postgres:16.4
     restart: always
