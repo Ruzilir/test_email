@@ -1,7 +1,11 @@
 FROM node:20
 
+WORKDIR /var/www
+
+COPY package*.json ./
+
 RUN npm install
 
-RUN npm run build
+COPY . .
 
-WORKDIR /var/www
+RUN npm run build
